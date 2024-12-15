@@ -1,11 +1,11 @@
 <?php
- 
+
 $dataPoints = array(
-	array("label"=> "Cukup", "y"=> 3),
-	array("label"=> "Kurang", "y"=> 3),
-	array("label"=> "Puas", "y"=> 3),
+	array("label"=> "Puas", "y"=> $totalPuas),
+	array("label"=> "Cukup", "y"=> $totalCukup),
+	array("label"=> "Kurang", "y"=> $totalKurang),
 );
-	
+
 ?>
 
 <head>
@@ -56,28 +56,30 @@ $dataPoints = array(
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($totalReports as $report)
                             <tr class="row text-start">
-                                <td>Selasa</td>
-                                <td>22-10-2024</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
+                                <td>{{ $report['day'] }}</td>
+                                <td>{{ $report['date'] }}</td>
+                                <td>{{ $report['puas'] }}</td>
+                                <td>{{ $report['cukup'] }}</td>
+                                <td>{{ $report['kurang'] }}</td>
+                                <td>{{ $report['total'] }}</td>
                             </tr>
+                            @endforeach
                             <tr class="row text-start border-t">
                                 <td class="font-medium">Jumlah Total</td>
                                 <td></td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
+                                <td>{{ $totalPuas }}</td>
+                                <td>{{ $totalCukup }}</td>
+                                <td>{{ $totalKurang }}</td>
+                                <td>{{ $totalSum }}</td>
                             </tr>
                             <tr class="row text-start border-t">
                                 <td class="font-medium">Persentase</td>
                                 <td></td>
-                                <td>33%</td>
-                                <td>33%</td>
-                                <td>33%</td>
+                                <td>{{ $puasPercentage . '%' }}</td>
+                                <td>{{ $cukupPercentage . '%' }}</td>
+                                <td>{{ $kurangPercentage . '%' }}</td>
                                 <td>100%</td>
                             </tr>
                         </tbody>
