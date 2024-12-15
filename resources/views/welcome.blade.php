@@ -253,7 +253,7 @@
                     <span id="plan-details-1" class="plan-details">
                         <div class="col-md-6">
                             <h5>Puas</h5>
-                            <h2>5</h2>
+                            <h2>{{ $votes->puas }}</h2>
                             <h5>Suara</h5>
                         </div>
                         <div class="col-md-6">
@@ -269,7 +269,7 @@
                     <span id="plan-details-2" class="plan-details">
                         <div class="col-md-6">
                             <h5>Cukup</h5>
-                            <h2>5</h2>
+                            <h2>{{ $votes->cukup }}</h2>
                             <h5>Suara</h5>
                         </div>
                         <div class="col-md-6">
@@ -285,7 +285,7 @@
                     <span id="plan-details-3" class="plan-details">
                         <div class="col-md-6">
                             <h5>Kurang</h5>
-                            <h2>5</h2>
+                            <h2>{{ $votes->kurang }}</h2>
                             <h5>Suara</h5>
                         </div>
                         <div class="col-md-6">

@@ -9,7 +9,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
-    return view('welcome');
+    $votes = Report::select(
+        DB::raw('SUM(CASE WHEN result = "PUAS" THEN 1 ELSE 0 END) as puas'),
+        DB::raw('SUM(CASE WHEN result = "CUKUP" THEN 1 ELSE 0 END) as cukup'),
+        DB::raw('SUM(CASE WHEN result = "KURANG" THEN 1 ELSE 0 END) as kurang'),
+    )
+    ->groupBy('date')
+    ->where('date', Carbon::today())
+    ->first();
+
+    return view('welcome', ['votes' => $votes]);
 })->name('welcome');
 
 Route::get('/dashboard', function () {
