@@ -214,9 +214,35 @@
     </style>
 
     <div class="container">
-        <div class="alert alert-danger" role="alert">
-            Perhatian!! untuk memberiikan penilaian/poling/suara silahkan klik icon/Emoji
-        </div>
+        @if(session('success'))
+            <div class="alert alert-danger" role="alert">
+                Perhatian!! untuk memberikan penilaian/poling/suara silahkan klik icon/Emoji
+            </div>
+            <div class="success-message alert alert-success" role="alert">
+                Sukses!! Terima kasih telah mengisi survei kepuasan kami
+            </div>
+            <style>
+                .success-message {
+                    position: absolute;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 9999;
+                }
+            </style>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    setTimeout(function() {
+                        $('.success-message').fadeOut();
+                    }, 3000);
+                });
+            </script>
+        @else
+            <div class="alert alert-danger" role="alert">
+                Perhatian!! untuk memberikan penilaian/poling/suara silahkan klik icon/Emoji
+            </div>
+        @endif
 
         <form method="POST" action="{{ route('submit.result') }}">
             @csrf

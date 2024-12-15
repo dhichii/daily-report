@@ -68,7 +68,7 @@ Route::post('/laporan', function (Request $request) {
     echo 'result' . $result;
 
     Report::create(['result' => $result]);
-    return redirect(route('welcome'));
+    return redirect(route('welcome'))->with('success', true);
 })->name('submit.result');
 
 Route::get('/laporan/export/excel', function () {
