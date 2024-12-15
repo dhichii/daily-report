@@ -231,7 +231,7 @@
                             <h5>Suara</h5>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" title="Jika anda merasa puas dengan Pelayanan kami, klik icon ini">
+                            <a title="Jika anda merasa puas dengan Pelayanan kami, klik icon ini">
                                 <img src="/img/puas.png" style="width: 100px">
                             </a>
                         </div>
@@ -247,7 +247,7 @@
                             <h5>Suara</h5>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" title="Jika anda merasa puas dengan Pelayanan kami, klik icon ini">
+                            <a title="Jika anda merasa puas dengan Pelayanan kami, klik icon ini">
                                 <img src="/img/cukup.png" style="width: 100px">
                             </a>
                         </div>
@@ -263,7 +263,7 @@
                             <h5>Suara</h5>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" title="Jika anda merasa puas dengan Pelayanan kami, klik icon ini">
+                            <a title="Jika anda merasa puas dengan Pelayanan kami, klik icon ini">
                                 <img src="/img/kurang.png" style="width: 100px">
                             </a>
                         </div>
