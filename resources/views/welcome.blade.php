@@ -32,6 +32,8 @@
             Perhatian!! untuk memberiikan penilaian/poling/suara silahkan klik icon/Emoji
         </div>
 
+        <form method="POST" action="{{ route('submit.result') }}">
+            @csrf
         <div class="row">
             <div class="col-md-4">
                 <div class="bg-primary box text-white">
@@ -49,7 +51,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <input class="text-center mx-auto" type="radio" name="option" value="option2" id="option2">
+                    <input class="text-center mx-auto" type="radio" name="result" value="PUAS" id="puas">
                 </div>
             </div>
             <div class="col-md-4">
@@ -68,7 +70,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <input class="text-center mx-auto" type="radio" name="option" value="option2" id="option2">
+                    <input class="text-center mx-auto" type="radio" name="result" value="CUKUP" id="cukup">
                 </div>
             </div>
             <div class="col-md-4">
@@ -87,7 +89,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <input class="text-center mx-auto" type="radio" name="option" value="option2" id="option2">
+                    <input class="text-center mx-auto" type="radio" name="result" value="KURANG" id="kurang">
                 </div>
             </div>
         </div>
@@ -95,6 +97,7 @@
             <button class="mt-3 w-25" type="submit">Vote</button>
         </div>
     </div>
+</form>
 
     <!-- Akhir Container -->
 
