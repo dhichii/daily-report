@@ -18,6 +18,10 @@ Route::get('/', function () {
     ->where('date', Carbon::today())
     ->first();
 
+    if (!$votes) {
+        $votes = (object)['puas' => 0, 'cukup' => 0, 'kurang' => 0];
+    }
+
     return view('welcome', ['votes' => $votes]);
 })->name('welcome');
 
