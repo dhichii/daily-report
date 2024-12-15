@@ -56,9 +56,9 @@ Route::get('/dashboard', function () {
         'totalCukup' => $totalCukup,
         'totalKurang' => $totalKurang,
         'totalSum' => $totalSum,
-        'puasPercentage' => $totalPuas/$totalSum*100,
-        'cukupPercentage' => $totalCukup/$totalSum*100,
-        'kurangPercentage' => $totalKurang/$totalSum*100,
+        'puasPercentage' => round($totalPuas/$totalSum*100, 2),
+        'cukupPercentage' => round($totalCukup/$totalSum*100, 2),
+        'kurangPercentage' => round($totalKurang/$totalSum*100, 2),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
