@@ -54,15 +54,30 @@ Route::get('/dashboard', function () {
         $totalKurang += $report->kurang;
     }
 
+    $puasPercentage = 0;
+    $cukupPercentage = 0;
+    $kurangPercentage = 0;
+    if ($totalPuas) {
+        $puasPercentage = round($totalPuas/$totalSum*100, 2);
+    }
+
+    if ($totalCukup) {
+        $cukupPercentage = round($totalCukup/$totalSum*100, 2);
+    }
+
+    if ($kurangPercentage) {
+        round($totalKurang/$totalSum*100, 2);
+    }
+
     return view('dashboard', [
         'totalReports' => $totalReports,
         'totalPuas' => $totalPuas,
         'totalCukup' => $totalCukup,
         'totalKurang' => $totalKurang,
         'totalSum' => $totalSum,
-        'puasPercentage' => round($totalPuas/$totalSum*100, 2),
-        'cukupPercentage' => round($totalCukup/$totalSum*100, 2),
-        'kurangPercentage' => round($totalKurang/$totalSum*100, 2),
+        'puasPercentage' => $puasPercentage,
+        'cukupPercentage' => $cukupPercentage,
+        'kurangPercentage' => $kurangPercentage,
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
