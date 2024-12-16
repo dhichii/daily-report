@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\ReportsExport;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Report;
@@ -7,6 +8,7 @@ use App\Utils\Day;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
     $votes = Report::select(
@@ -100,10 +102,7 @@ Route::post('/laporan', function (Request $request) {
 })->name('submit.result');
 
 Route::get('/laporan/export/excel', function () {
-    $reports = Report::get();
-
-    echo 'reports';
-    echo $reports;
-})->name('laporan.export.excel');
+    return Excel::download(new ReportsExport, 'laporan.xlsx');
+})->middleware(['auth', 'verified'])->name('laporan.export.excel');
 
 require __DIR__.'/auth.php';

@@ -84,6 +84,12 @@ $dataPoints = array(
                             </tr>
                         </tbody>
                     </table>
+
+                    <a href="{{ route('laporan.export.excel') }}">
+                        <x-primary-button class="mt-4">
+                            {{ __('Export Excel') }}
+                        </x-primary-button>
+                    </a>
                 </div>
             </div>
             <div class="rounded-lg">
