@@ -28,9 +28,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/dashboard', function () {
-    $today = Carbon::today();
-    $startDate = $today->startOfWeek()->toDateString();
-    $endDate = $today->endOfWeek()->toDateString();
     $totalReports = Report::select(
         'date',
         DB::raw('SUM(CASE WHEN result = "PUAS" THEN 1 ELSE 0 END) as puas'),
@@ -39,8 +36,7 @@ Route::get('/dashboard', function () {
         DB::raw('COUNT(*) as total')
     )
     ->groupBy('date')
-    ->orderBy('date')
-    ->whereBetween('date', [$startDate, $endDate])
+    ->orderBy('date', 'desc')
     ->get();
 
     $totalSum = 0;
