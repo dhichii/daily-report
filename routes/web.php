@@ -63,8 +63,8 @@ Route::get('/dashboard', function () {
         $cukupPercentage = round($totalCukup/$totalSum*100, 2);
     }
 
-    if ($kurangPercentage) {
-        round($totalKurang/$totalSum*100, 2);
+    if ($totalKurang) {
+        $kurangPercentage = round($totalKurang/$totalSum*100, 2);
     }
 
     return view('dashboard', [
