@@ -91,6 +91,8 @@ Route::get('/dashboard', function () {
         'puasPercentage' => $puasPercentage,
         'cukupPercentage' => $cukupPercentage,
         'kurangPercentage' => $kurangPercentage,
+        'selectedMonth' => $month,
+        'selectedYear' => $year,
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

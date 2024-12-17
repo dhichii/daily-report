@@ -44,6 +44,18 @@ $dataPoints = array(
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-4">
                         {{ __('Dashboard') }}
                     </h2>
+                    <form method="GET" action="{{ route('dashboard') }}">
+                        <select name="month" id="month">
+                            @foreach(range(1, 12) as $month)
+                            <option value="{{ $month }}"
+                                {{ $selectedMonth == $month ? 'selected' : '' }}>
+                                {{ \Carbon\Carbon::create()->month($month)->format('F') }}
+                            </option>
+                            @endforeach
+                        </select>
+
+                        <button type="submit">Submit</button>
+                    </form>
                     <table class="table-auto w-full">
                         <thead>
                             <tr class="text-left">
