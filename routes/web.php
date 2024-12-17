@@ -28,6 +28,20 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/dashboard', function () {
+    $month = request('month');
+    $year = request('year');
+    $today = Carbon::now();
+    if (!isset($month)) {
+        $month = $today->month;
+    }
+
+    if (!isset($year)) {
+        $year = $today->year;
+    }
+
+    $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfDay();
+    $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+
     $totalReports = Report::select(
         'date',
         DB::raw('SUM(CASE WHEN result = "PUAS" THEN 1 ELSE 0 END) as puas'),
@@ -35,6 +49,7 @@ Route::get('/dashboard', function () {
         DB::raw('SUM(CASE WHEN result = "KURANG" THEN 1 ELSE 0 END) as kurang'),
         DB::raw('COUNT(*) as total')
     )
+    ->whereBetween('date', [$startOfMonth, $endOfMonth])
     ->groupBy('date')
     ->orderBy('date', 'desc')
     ->get();
