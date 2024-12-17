@@ -45,16 +45,48 @@ $dataPoints = array(
                         {{ __('Dashboard') }}
                     </h2>
                     <form method="GET" action="{{ route('dashboard') }}">
-                        <select name="month" id="month">
+                        <select class="rounded-md border-gray-300" name="month" id="month">
+                            @php
+                                $months = [
+                                    1 => 'Januari',
+                                    2 => 'Februari',
+                                    3 => 'Maret',
+                                    4 => 'April',
+                                    5 => 'Mei',
+                                    6 => 'Juni',
+                                    7 => 'Juli',
+                                    8 => 'Agustus',
+                                    9 => 'September',
+                                    10 => 'Oktober',
+                                    11 => 'November',
+                                    12 => 'Desember',
+                                ];
+                            @endphp
+
                             @foreach(range(1, 12) as $month)
                             <option value="{{ $month }}"
                                 {{ $selectedMonth == $month ? 'selected' : '' }}>
-                                {{ \Carbon\Carbon::create()->month($month)->format('F') }}
+                                {{ $months[$month] }}
                             </option>
                             @endforeach
                         </select>
 
-                        <button type="submit">Submit</button>
+                        <select class="rounded-md border-gray-300" name="year" id="year">
+                            @php
+                                $startYear = 2000;
+                                $currentYear = \Carbon\Carbon::now()->year;
+                                $yearRange = array_reverse(range($startYear, $currentYear));
+                            @endphp
+
+                            @foreach($yearRange as $year)
+                                <option value="{{ $year }}"
+                                    {{ $selectedYear == $year ? 'selected' : '' }}>
+                                    {{ $year }} <!-- Display the year -->
+                                </option>
+                            @endforeach
+                        </select>
+
+                        <button class='inline-flex items-center px-4 py-3 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150' type="submit">Terapkan</button>
                     </form>
                     <table class="table-auto w-full">
                         <thead>
