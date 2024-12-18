@@ -110,7 +110,7 @@ Route::post('/laporan', function (Request $request) {
     $result = $request->result;
     echo 'result' . $result;
 
-    Report::create(['result' => $result]);
+    Report::create(['result' => $result, 'date' => Carbon::now()]);
     return redirect(route('welcome'))->with('success', true);
 })->name('submit.result');
 
